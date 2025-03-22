@@ -1,16 +1,33 @@
 using UnityEngine;
 
-public class ThrustLander : MonoBehaviour
+public class LunarLander : MonoBehaviour
 {
-    public float maxThrust;
-    public float thrustChange;
-    public float engineAngleMax;
-    public float inertialMoment;
-    private float thrust;
-    private float engineAngle;
+    public float maxThrust = 2f;
+    public float thrustChange = 0.2f;
+    public float engineAngleMax = 0.5f;
+    public float inertialMoment = 5f;
+    private float thrust = 0f;
+    private float engineAngle = 0f;
+    private float fuel = 100;
     private new Rigidbody2D rigidbody2D; // 이 문법은 무슨 뜻일까?
     public GameObject thrustEngine;
     private TiltEngine tiltEngine;
+    
+    public float GetThrust()
+    {
+        return thrust;
+    }
+    public float GetInclination()
+    {
+        float rawInclination = transform.rotation.eulerAngles.z;
+        if (rawInclination > 180)
+            return rawInclination - 360;
+        else return rawInclination;
+    }
+    public float GetFuel()
+    {
+        return fuel;
+    }
 
     void Start()
     {
