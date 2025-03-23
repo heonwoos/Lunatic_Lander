@@ -10,8 +10,6 @@ public class MoveCamera : MonoBehaviour
     {
         transform.position = new Vector3(
             target.transform.position.x + cameraOffset.x,
-            Mathf.Clamp(target.transform.position.y, 0, cameraHeightMax) + cameraOffset.y,
-            -10
-            );
+            Mathf.Clamp(target.transform.position.y, 0, cameraHeightMax) + cameraOffset.y, -10);
     }
 }
