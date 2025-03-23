@@ -8,7 +8,9 @@ public class LunarLander : MonoBehaviour
     public float inertialMoment = 5f;
     private float thrust = 0f;
     private float engineAngle = 0f;
-    private float fuel = 100;
+    public float maxFuel = 100f;
+    private float fuel = 100f;
+    public int score = 0;
     private new Rigidbody2D rigidbody2D; // 이 문법은 무슨 뜻일까?
     public GameObject thrustEngine;
     private TiltEngine tiltEngine;
@@ -24,9 +26,19 @@ public class LunarLander : MonoBehaviour
             return rawInclination - 360;
         else return rawInclination;
     }
+    
     public float GetFuel()
     {
         return fuel;
+    }
+
+    public void SetFuel(float fuelLevel) {
+        maxFuel = fuelLevel;
+        fuel = maxFuel;
+    }
+
+    public void Die() {
+        Destroy(this);
     }
 
     void Start()

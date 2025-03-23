@@ -17,16 +17,13 @@ public class MoonGenerator : MonoBehaviour
     private float perlinPower = 3f;
 
     public Vector2[] GetBaseCoordinates() { // 베이스들의 좌표
+        Vector2 meshDisplacement = new Vector2(-localMaxima[0], -perlinData[localMaxima[0]] - 1);
         int numberOfBases = localMaxima.Count;
         Vector2[] baseCoordinates = new Vector2[numberOfBases];
         for (int i = 0; i < numberOfBases; i++) {
-            baseCoordinates[i] = new Vector2(localMaxima[i], perlinData[i]);
+            baseCoordinates[i] = new Vector2(localMaxima[i], perlinData[localMaxima[i]]) + meshDisplacement;
         }
         return baseCoordinates;
-    }
-
-    public Vector2 GetMoonPointZero() { // 달 지형의 시작점 구하기
-        return new Vector2(localMaxima[0], perlinData[localMaxima[0]]);
     }
 
     void Start()
@@ -42,15 +39,16 @@ public class MoonGenerator : MonoBehaviour
         computeLocalMaxima(perlinData);
         createMoonVertices();
         createMoonMesh();
+        transformMoonMesh();
         GetComponent<PolygonCollider2D>().points = createCollider();
     }
     float customPerlinNoise1(int x) { // 펄린 노이즈 생성기 1 (전체적인 지형의 모양)
         return Mathf.Pow(
             Mathf.Clamp(Mathf.PerlinNoise1D((x + randomSeed) * perlinDensity), 0f, 1f) * perlinMagnitude,
-            perlinPower);
+            perlinPower) - 3f;
         }
     float customPerlinNoise2(int x){ // 펄린 노이즈 생성기 2 (지형 디테일 추가)
-        return (Mathf.Clamp(Mathf.PerlinNoise1D((x + randomSeed) * perlinDensity * 3), 0f, 1f) - 0.5f) * perlinMagnitude / 4;
+        return (Mathf.Clamp(Mathf.PerlinNoise1D((x + randomSeed) * perlinDensity * 4), 0f, 1f) - 0.5f) * perlinMagnitude / 4;
     }
 
     void createPerlinData() { // 생성된 (Y좌표로 이용될)펄린 노이즈1 저장
@@ -60,11 +58,10 @@ public class MoonGenerator : MonoBehaviour
         }
     }
     void createMoonVertices() { // 메쉬를 구성하는 점 생성
-        float initHeight = perlinData[localMaxima[0]];
         for (int i = 0, x=0; i < moonLength * 2; i+=2)
         {
-            verticesData[i] = new Vector3(x - localMaxima[0], -9 - initHeight, 0);
-            verticesData[i + 1] = new Vector3(x - localMaxima[0], -3 - initHeight + perlinData[x] + customPerlinNoise2(x), 0);
+            verticesData[i] = new Vector3(x, -6, 0);
+            verticesData[i + 1] = new Vector3(x , perlinData[x] + customPerlinNoise2(x), 0);
             x++;
         }
         moonMesh.SetVertices(verticesData);
@@ -83,7 +80,12 @@ public class MoonGenerator : MonoBehaviour
         moonMesh.SetIndices(meshTriangle, MeshTopology.Triangles, 0);
     }
 
-    void computeLocalMaxima(float[] data) { // 극대값을 갖는 지점 저장
+    void transformMoonMesh() { // 첫 번째 극대점이 (0,-1)이 되도록 메쉬를 이동
+        int firstLocalMaximum = localMaxima[0];
+        transform.Translate(new Vector2(-firstLocalMaximum, -perlinData[firstLocalMaximum] - 1));
+    }
+
+    void computeLocalMaxima(float[] data) { // 극대값을 갖는 지점 계산 후 저장
         localMaxima = new List<int>();
         int i = 0;
         for (int x = 1; x < data.Length-1; x++)
