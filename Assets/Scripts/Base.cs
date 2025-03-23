@@ -1,10 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Base : MonoBehaviour
 {
     private int stage;
-    public LunarLander lunarlander;
+    public LunarLander lunarLander;
 
+    void Start()
+    {
+    }
     public void setStage(int num) {
         stage = num;
     }
@@ -14,11 +18,12 @@ public class Base : MonoBehaviour
 
         return 100f;
     }
-    void OnCollisionEnter(Collision collision)
+    
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Lunar Lander" && lunarlander.score < stage) {
-            lunarlander.score = stage;
+        if(collision.gameObject.name == "Lunar Lander" && lunarLander.score < stage) {
+            lunarLander.score = stage;
         }
-        lunarlander.SetFuel(computeFuelAmount());
+        lunarLander.SetFuel(computeFuelAmount());
     }
 }

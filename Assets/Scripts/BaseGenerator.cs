@@ -5,6 +5,7 @@ public class BaseGenerator : MonoBehaviour
 {
     public MoonGenerator moonGenerator;
     public GameObject basePrefab;
+    public LunarLander lunarLanderInstance;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class BaseGenerator : MonoBehaviour
                 parent: transform);
             Base baseScript = newBase.GetComponent<Base>();
             baseScript.setStage(i);
+            baseScript.lunarLander = lunarLanderInstance;
         }
     }
 
