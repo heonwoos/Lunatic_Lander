@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moonGenerator: {fileID: 768538334}
   basePrefab: {fileID: 5867152248121132292, guid: 88559758026223a45aec1746433e47b7, type: 3}
-  lunarLanderInstance: {fileID: 1649455325}
+  lunarLander: {fileID: 1649455325}
 --- !u!4 &890373297
 Transform:
   m_ObjectHideFlags: 0
