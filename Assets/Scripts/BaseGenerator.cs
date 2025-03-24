@@ -21,8 +21,10 @@ public class BaseGenerator : MonoBehaviour
     void Start()
     {
         baseCoordinates = moonGenerator.GetBaseCoordinates();
-        
-        for (int i = 0; i < baseCoordinates.Length; i++) {
+        int baseAmount = baseCoordinates.Length;
+        Base[] bases = new Base[baseAmount];
+
+        for (int i = 0; i < baseAmount; i++) {
             GameObject newBase = Instantiate(
                 original: basePrefab,
                 position: baseCoordinates[i],
@@ -33,6 +35,11 @@ public class BaseGenerator : MonoBehaviour
             baseScript.lunarLander = lunarLander;
             baseScript.scoreManager = scoreManager;
             baseScript.SetFuelNeeded(computeFuelAmount(i));
+            bases[i] = baseScript;
+        }
+
+        for (int i = 0; i < baseAmount - 1; i++) {
+            bases[i].nextBase = bases[i+1]; 
         }
     }
 

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -10,24 +11,27 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
        highScore = PlayerPrefs.GetInt("High", 0);
+       UpdateScores(0);
     }
 
-    public void UpdateScores(int score) {
-        SetCurrentScore(score);
-        SetHighScore(score);
+    public void UpdateScores(int stage) {
+        SetCurrentScore(stage);
+        SetHighScore(stage);
         DisplayScores();
     }
 
-    private void SetCurrentScore(int score) {
-        if (currentScore < score)
-            currentScore = score;
+    public bool IsScored(int stage) {
+        return currentScore == stage - 1;
     }
-    private void SetHighScore(int score) {
-        if (highScore < score)
-            PlayerPrefs.SetInt("High", score);
+    private void SetCurrentScore(int stage) {
+        currentScore = stage;
+    }
+    private void SetHighScore(int stage) {
+        if (highScore < stage) {
+            PlayerPrefs.SetInt("High", stage);
             highScore = PlayerPrefs.GetInt("High");
+        }
     }
-
     private void DisplayScores() {
         currentScoreText.text = currentScore.ToString();
         highScoreText.text = highScore.ToString();
