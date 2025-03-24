@@ -16,6 +16,8 @@ public class MoonGenerator : MonoBehaviour
     private float perlinMagnitude = 2.44f;
     private float perlinPower = 3f;
 
+    public MoveCamera moveCamera;
+
     public Vector2[] GetBaseCoordinates() { // 베이스들의 좌표
         Vector2 meshDisplacement = new Vector2(-localMaxima[0], -perlinData[localMaxima[0]] - 1);
         int numberOfBases = localMaxima.Count;
@@ -41,6 +43,8 @@ public class MoonGenerator : MonoBehaviour
         createMoonMesh();
         transformMoonMesh();
         GetComponent<PolygonCollider2D>().points = createCollider();
+
+        moveCamera.cameraHeightMin = - perlinData[localMaxima[0]];
     }
     float customPerlinNoise1(int x) { // 펄린 노이즈 생성기 1 (전체적인 지형의 모양)
         return Mathf.Pow(

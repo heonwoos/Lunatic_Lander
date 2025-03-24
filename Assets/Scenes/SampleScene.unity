@@ -1588,6 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fdd86d307fbb674684bd760085b7c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveCamera: {fileID: 519420033}
 --- !u!33 &768538335
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2987,7 +2988,7 @@ GameObject:
   - component: {fileID: 1521871367}
   - component: {fileID: 1521871366}
   m_Layer: 0
-  m_Name: Nothing Here
+  m_Name: Weeeeeeeeeeeee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3013,7 +3014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nothing here
+  m_text: WEEEEEEEEEEEEE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3148,7 +3149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.09, y: 23.6}
+  m_AnchoredPosition: {x: -100, y: 4}
   m_SizeDelta: {x: 10.0926, y: 2.9433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1564440787
