@@ -9,7 +9,7 @@ public class MoonGenerator : MonoBehaviour
     private List<int> localMaxima; // 극대값을 가지는 좌표 리스트
     private Vector3[] verticesData; // 메쉬의 점들 벡터 
     private int[] meshTriangle; // 메쉬 삼각형 만들 때 쓰이는 정수 배열
-    private int moonLength = 500;
+    private int moonLength = 1000;
 
     // 펄린 노이즈 조작용 변수들
     private float perlinDensity = 0.08f;
