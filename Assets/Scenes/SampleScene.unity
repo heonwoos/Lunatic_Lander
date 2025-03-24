@@ -1044,7 +1044,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 156.9127, y: 42.34}
+  m_SizeDelta: {x: 180, y: 42.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542298657
 MonoBehaviour:
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INCLINATION
+  m_text: HORIZONTAL VELOCITY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1916,7 +1916,7 @@ GameObject:
   - component: {fileID: 818366580}
   - component: {fileID: 818366581}
   m_Layer: 5
-  m_Name: Inclinometer
+  m_Name: Speedometer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,9 +1987,9 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1130817986}
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 1130817985}
-  m_Direction: 1
-  m_MinValue: -180
-  m_MaxValue: 180
+  m_Direction: 0
+  m_MinValue: -8
+  m_MaxValue: 8
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3156,7 +3156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustGauge: {fileID: 283075032}
-  inclinometer: {fileID: 818366581}
+  speedometer: {fileID: 0}
   fuelGauge: {fileID: 20126285}
   lunarLander: {fileID: 1649455325}
 --- !u!1 &1521871365

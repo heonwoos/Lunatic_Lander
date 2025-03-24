@@ -20,12 +20,9 @@ public class LunarLander : MonoBehaviour
     {
         return thrust;
     }
-    public float GetInclination()
+    public float GetHorizontalVelocity()
     {
-        float rawInclination = transform.rotation.eulerAngles.z;
-        if (rawInclination > 180)
-            return rawInclination - 360;
-        else return rawInclination;
+        return rigidbody2D.linearVelocityX;
     }
 
     public float GetFuel()
