@@ -7,6 +7,7 @@ public class BaseGenerator : MonoBehaviour
     public MoonGenerator moonGenerator;
     public GameObject basePrefab;
     public LunarLander lunarLander;
+    public ScoreManager scoreManager;
     private Vector2[] baseCoordinates;
 
     private int fuelDistanceRatio = 5;
@@ -32,6 +33,7 @@ public class BaseGenerator : MonoBehaviour
             Base baseScript = newBase.GetComponent<Base>();
             baseScript.setStage(i);
             baseScript.lunarLander = lunarLander;
+            baseScript.scoreManager = scoreManager;
             baseScript.SetFuelNeeded(computeFuelAmount(i));
         }
     }
