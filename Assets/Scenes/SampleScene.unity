@@ -1305,6 +1305,7 @@ GameObject:
   - component: {fileID: 768538335}
   - component: {fileID: 768538338}
   - component: {fileID: 768538334}
+  - component: {fileID: 768538339}
   m_Layer: 0
   m_Name: Moon Generator
   m_TagString: Untagged
@@ -1444,6 +1445,19 @@ PolygonCollider2D:
       - {x: 0.58778536, y: -0.80901694}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 0
+--- !u!114 &768538339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768538333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3866e028a20efc0489a8aa80f778f239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lunarLander: {fileID: 1649455320}
 --- !u!1 &818366579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,6 +7962,14 @@ PrefabInstance:
     - target: {fileID: 383415431954249577, guid: 0d65ba2cb5c77ec44b67ae8116b95a70, type: 3}
       propertyPath: m_Name
       value: Lunar Lander
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660330766912108373, guid: 0d65ba2cb5c77ec44b67ae8116b95a70, type: 3}
+      propertyPath: sceneChanger
+      value: 
+      objectReference: {fileID: 1793827159}
+    - target: {fileID: 4660330766912108373, guid: 0d65ba2cb5c77ec44b67ae8116b95a70, type: 3}
+      propertyPath: fuelThrustRatio
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8724745674393690527, guid: 0d65ba2cb5c77ec44b67ae8116b95a70, type: 3}
       propertyPath: m_LocalRotation.w

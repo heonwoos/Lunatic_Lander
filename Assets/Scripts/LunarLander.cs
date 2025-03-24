@@ -15,6 +15,7 @@ public class LunarLander : MonoBehaviour
     private new Rigidbody2D rigidbody2D; // 이 문법은 무슨 뜻일까?
     public GameObject thrustEngine;
     private TiltEngine tiltEngine;
+    public SceneChanger sceneChanger;
     
     public float GetThrust()
     {
@@ -40,6 +41,8 @@ public class LunarLander : MonoBehaviour
 
     public void Die() {
         Destroy(this);
+        // 죽는 애니메이션 실행
+        sceneChanger.startGame();
     }
 
     void Start()
