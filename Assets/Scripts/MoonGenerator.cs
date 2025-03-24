@@ -60,7 +60,7 @@ public class MoonGenerator : MonoBehaviour
     void createMoonVertices() { // 메쉬를 구성하는 점 생성
         for (int i = 0, x=0; i < moonLength * 2; i+=2)
         {
-            verticesData[i] = new Vector3(x, -6, 0);
+            verticesData[i] = new Vector3(x, -10, 0);
             verticesData[i + 1] = new Vector3(x , perlinData[x] + customPerlinNoise2(x), 0);
             x++;
         }
