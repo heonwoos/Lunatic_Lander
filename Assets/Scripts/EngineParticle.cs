@@ -1,17 +1,23 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EngineParticle : MonoBehaviour
 {
-    private ParticleSystem.MainModule mainModule;
+    private ParticleSystem engineParticleSystem;
     public LunarLander lunarLander;
     private float lifetimeThrustRatio = 0.5f;
     void Start()
     {
-        mainModule = GetComponent<ParticleSystem>().main;
+        engineParticleSystem = GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
-        mainModule.startLifetime = lunarLander.GetThrust() * lifetimeThrustRatio;
+        if (engineParticleSystem != null){
+            var main = engineParticleSystem.main;
+            main.startLifetime = lunarLander.GetThrust() * lifetimeThrustRatio;
+        } else {
+            engineParticleSystem = GetComponent<ParticleSystem>();
+        }
     }
 }
