@@ -55,23 +55,24 @@ public class LunarLander : MonoBehaviour
         float verticalAxis = Input.GetAxis("Vertical");
         float horizontalAxis = - Input.GetAxis("Horizontal");
 
-        // 추력 조종
-        thrust += thrustChange * verticalAxis;
-        thrust = Mathf.Clamp(thrust, 0f, maxThrust);
-
         // 추력 방향 조종
         engineAngle = engineAngleMax * horizontalAxis;
 
         // 엔진 움직이기
         tiltEngine.SetEngineAngle(engineAngle);
 
-        // 연료 태우기
-        fuel -= thrust * fuelThrustRatio;
 
-        // 연료가 있다면 힘과 토크 주기
         if (fuel > 0) {
+            // 추력 조종
+            thrust += thrustChange * verticalAxis;
+            thrust = Mathf.Clamp(thrust, 0f, maxThrust);
+            // 연료 태우기
+            fuel -= thrust * fuelThrustRatio;
+            // 힘과 토크 주기
             rigidbody2D.AddRelativeForce(new Vector2(0, thrust * Mathf.Cos(engineAngle)));
             rigidbody2D.AddTorque(thrust * Mathf.Sin(engineAngle) / inertialMoment);
+        } else {
+            thrust = 0;
         }
     }
 }
