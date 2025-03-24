@@ -36,7 +36,7 @@ public class MoonGenerator : MonoBehaviour
         verticesData = new Vector3[moonLength * 2];
         meshTriangle = new int[(moonLength - 1) * 2 * 3];
 
-        randomSeed = Random.Range(-100f, 100f);
+        randomSeed = Random.Range(-10000f, 10000f);
         createPerlinData();
         computeLocalMaxima(perlinData);
         createMoonVertices();
