@@ -39,7 +39,6 @@ public class LunarLander : MonoBehaviour
     }
 
     public void Die() {
-        Destroy(this);
         // 죽는 애니메이션 실행
         sceneChanger.startGame();
     }
