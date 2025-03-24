@@ -11,7 +11,7 @@ public class LunarLander : MonoBehaviour
     public float maxFuel = 100f;
     private float fuel = 100f;
     public int score = 0;
-    public float fuelThrustRatio = 0.5f;
+    public float fuelThrustRatio = 0.05f;
     private new Rigidbody2D rigidbody2D; // 이 문법은 무슨 뜻일까?
     public GameObject thrustEngine;
     private TiltEngine tiltEngine;
